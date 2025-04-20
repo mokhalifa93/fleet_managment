@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "e52ce26c-fefd-4f08-9be1-f205ef4fc349",
+		"name": "Vehicle API Collection",
+		"description": "Postman collection to test Vehicle API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3966005"
+	},
+	"item": [
+		{
+			"name": "Register Vehicle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"SUV\",\n  \"vehicleModel\": \"Yaris\",\n  \"name\": \"Yaris 2011\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/vehicles/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"vehicles",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Vehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vehicle by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/vehicles/68053cf101a09bb29dea099a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"vehicles",
+						"68053cf101a09bb29dea099a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Vehicle maintaince",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"User Done\",\r\n    \"cost\": 250\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/vehicles/maintenance/6803bde88ae9bfac528d6956",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"vehicles",
+						"maintenance",
+						"6803bde88ae9bfac528d6956"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "vehicleId",
+			"value": "replace_with_actual_id"
+		}
+	]
+}
