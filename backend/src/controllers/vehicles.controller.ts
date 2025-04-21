@@ -6,6 +6,7 @@ import {
     updateVehicleLocationService,
     createMaintenanceService
 } from '../services/vehicle.service';
+import mongoose from 'mongoose';
 
 /**
  * @swagger
@@ -34,13 +35,14 @@ import {
  *       500:
  *         description: Failed to register vehicle
  */
+
 export const registerVehicle = async (req: Request, res: Response): Promise<any> => {
-    try {
-        const vehicle = await createVehicle(req.body);
-        return res.status(201).json(vehicle);
-    } catch (err) {
-        return res.status(500).json({ error: 'Failed to register vehicle' });
-    }
+  try {
+    const vehicle = await createVehicle(req.body);
+    return res.status(201).json(vehicle);
+  } catch (err) {
+    return res.status(500).json({ error: 'Failed to register vehicle' });
+  }
 };
 /**
  * @swagger
@@ -199,9 +201,9 @@ export const updateVehicleLocation = async (req: Request, res: Response): Promis
  */
 
   export const CreateMaintenance = async (req: Request, res: Response): Promise<void> => {
-    const maintenanceId = req.params.id;
+
     try {
-      const updated = await createMaintenanceService(maintenanceId, req.body);
+      const updated = await createMaintenanceService(req.params.id, req.body);
       res.status(200).json({
         message: 'Maintenance record created successfully',
         data: updated,

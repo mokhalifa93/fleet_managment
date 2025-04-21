@@ -17,7 +17,7 @@ const AnalyticsSchema = new Schema(
     distanceTraveled: { type: Number, default: 0 },
     updatedAt: { type: Date, default: Date.now }
   },
-  { _id: false } // embedded schema, no separate _id
+  { _id: false }
 );
 
 const VehicleSchema = new Schema<IVehicle>(

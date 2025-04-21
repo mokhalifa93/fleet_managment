@@ -7,18 +7,7 @@ export const vehicleSchema = Joi.object({
 });
 
 
-export const maintenanceSchema = Joi.object({
-    vehicle: Joi.string()
-      .custom((value, helpers) => {
-        if (!mongoose.Types.ObjectId.isValid(value)) {
-          return helpers.error('Invalid vehicle ID format');
-        }
-        return value;
-      })
-      .required()
-      .label('Vehicle ID'),
-    
+export const maintenanceSchema = Joi.object({  
     description: Joi.string().allow('').optional().label('Description'),
-  
     cost: Joi.number().min(0).optional().label('Cost'),
   });

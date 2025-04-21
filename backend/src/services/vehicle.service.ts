@@ -1,17 +1,16 @@
 import {Vehicle, IVehicle } from '../models/Vehicles';
-import { Types } from 'mongoose';
+import  { Types } from 'mongoose';
 import { VehicleTracking } from '../models/VehicleTracking';
 // services/maintenance.service.ts
 import Maintenance ,{ IMaintenance } from '../models/Maintenance';
 
 
-export const createVehicle = async (data: Partial<IVehicle>) => {
+export const createVehicle = async (data: Partial<IVehicle>)=> {
   const vehicle = new Vehicle(data);
   return await vehicle.save();
 };
 
 export const getVehicleById = async (id: string) => {
-    
   const vehicle =  await Vehicle.aggregate([
     {
         $match: {
@@ -43,9 +42,6 @@ export const updateVehicleLocationService = async (
   lng: number,
   speed: number
 ) => {
-  if (!Types.ObjectId.isValid(vehicleId)) {
-    throw new Error('Invalid vehicle ID');
-  }
 
   const vehicle = await Vehicle.findById(vehicleId).lean();
   if (!vehicle) {
@@ -70,9 +66,7 @@ export const updateVehicleLocationService = async (
 export const createMaintenanceService = async (
     id: string,
     body: Partial<IMaintenance>
-  ) => {
-
-  
+  ) => {  
     const vehicleExists = await Vehicle.exists({_id:id}).lean();
     if (!vehicleExists) {
       throw new Error('Vehicle not found, cannot create maintenance record.');

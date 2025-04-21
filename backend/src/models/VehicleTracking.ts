@@ -7,7 +7,7 @@ export interface IVehicleTracking extends Document {
     type: 'Point';
     coordinates: [number, number]; // [lng, lat]
   };
-  speed: number; // current speed
+  speed: number;
   timestamp: Date;
 }
 
